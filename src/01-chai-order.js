@@ -47,7 +47,17 @@
  */
 export function getChaiOrderLength(order) {
   // Your code here
+  if (typeof order !== "string") {
+    return 0;
+  }
+
+  // trim() removes leading/trailing whitespace
+  let newOrder = order.trim();
+
+  // Just return the number!
+  return newOrder.length;
 }
+console.log(getChaiOrderLength("Masala Chai"));
 
 export function shoutChaiOrder(order) {
   // Your code here

@@ -47,20 +47,55 @@
  */
 export function repeatPattern(pattern, times) {
   // Your code here
+  if (typeof pattern !== "string" || times < 0) {
+    return "";
+  }
+  return pattern.repeat(times);
 }
+console.log(repeatPattern("*-", 4));
 
 export function extractRangoliCenter(design, start, end) {
   // Your code here
+  if (
+    typeof design !== "string" ||
+    typeof start !== "number" ||
+    typeof end !== "number"
+  ) {
+    return "";
+  }
+  return design.slice(start, end);
 }
+console.log(extractRangoliCenter("***LOTUS***", 3, 10));
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
   // Your code here
+  if (typeof colorString !== "string") {
+    return "";
+  }
+  return colorString.split(oldSep).join(newSep);
 }
+console.log(splitAndJoinRangoli("red,blue,green", ",", " | "));
 
 export function replaceRangoliColor(design, oldColor, newColor) {
   // Your code here
+  if (
+    typeof design !== "string" ||
+    typeof oldColor !== "string" ||
+    typeof newColor !== "string"
+  ) {
+    return "";
+  }
+  return design.replaceAll(oldColor, newColor);
 }
+console.log(replaceRangoliColor("red-blue-red-green-red", "red", "pink"));
 
 export function makeRangoliBorder(char, length) {
   // Your code here
+  if (typeof char !== "string" || typeof length !== "number" || length <= 0) {
+    return "";
+  }
+  return char.repeat(length).slice(0, length);
 }
+console.log(makeRangoliBorder("*", 5));
+console.log(makeRangoliBorder("=-", 7));
+console.log(makeRangoliBorder("abc", 2));
