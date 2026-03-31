@@ -52,20 +52,76 @@
  */
 export function parseFare(fareString) {
   // Your code here
+  if (typeof fareString !== "string") {
+    return -1;
+  }
+
+  const fare = parseFloat(fareString);
+
+  if (isNaN(fare)) {
+    return -1;
+  }
+
+  return fare;
 }
+// console.log(parseFare("152.50"));
+// console.log(parseFare("abc"));
+// console.log(parseFare(100));
+// console.log(parseFare("42.0"));
 
 export function roundFare(amount, decimalPlaces) {
   // Your code here
+  if (typeof amount !== "number" || decimalPlaces < 0) {
+    return "";
+  }
+  const fare = amount.toFixed(decimalPlaces);
+
+  return Number(fare);
 }
+console.log(roundFare(152.567, 2));
+console.log(roundFare(152.567, 0));
 
 export function calculateSurge(baseFare, surgeMultiplier) {
   // Your code here
+  if (baseFare < 0 || surgeMultiplier < 0) {
+    return 0;
+  }
+  const calculateFare = Math.ceil(baseFare * surgeMultiplier);
+  console.log("calculateFare", calculateFare);
 }
+console.log(calculateSurge(100, 1.5));
 
 export function findCheapestAndCostliest(...fares) {
   // Your code here
+
+  const validFares = fares.filter(
+    (n) => typeof n === "number" && !Number.isNaN(n),
+  );
+
+  if (validFares.length === 0) {
+    return null;
+  }
+  const cheapest = Math.min(...validFares);
+  const costliest = Math.max(...validFares);
+}
+return {
+  cheapest: cheapest,
+  costliest: costliest,
+};
+export function getDistanceDifference(from, to) {
+  // 1. Define the variables first!
+  const valA = parseInt(from, 10);
+  const valB = parseInt(to, 10);
+
+  // 2. Check for NaN
+  if (Number.isNaN(valA) || Number.isNaN(valB)) {
+    return -1;
+  }
+
+  // 3. This code is now reachable because valA/valB exist
+  // And we use "Math" (no 's')
+  const diff = Math.abs(valA - valB);
+  return diff;
 }
 
-export function getDistanceDifference(from, to) {
-  // Your code here
-}
+
